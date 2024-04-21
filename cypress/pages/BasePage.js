@@ -1,13 +1,11 @@
 export class BasePage {
-
-    header () {
+    header() {
         return cy.get('header');
     }
 
-    footer () {
+    footer() {
         return cy.get('footer');
     }
-
 }
 
 export const basePage = new BasePage();

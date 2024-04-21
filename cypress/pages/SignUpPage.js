@@ -1,7 +1,6 @@
 export class SignUpPage {
-
     signUpButton() {
-        return cy.xpath(`//button[@class='hero-descriptor_btn btn btn-primary']`);  
+        return cy.xpath(`//button[@class='hero-descriptor_btn btn btn-primary']`);
     }
 
     signupName() {
@@ -23,7 +22,7 @@ export class SignUpPage {
     signupRepeatPassword() {
         return cy.xpath(`//input[@id='signupRepeatPassword']`);
     }
-    
+
     registerButton() {
         return cy.xpath(`//button[@class='btn btn-primary']`);
     }
@@ -57,9 +56,19 @@ export class SignUpPage {
         this.profileButton().contains('Profile').click();
         this.panelProfileUrl();
         this.profileName().should('contain.text', user.firstName + ' ' + user.lastName);
+    }
 
+    findButtomByText(text) {
+        return cy.get('button').contains(text);
+    }
+
+    signInEmail() {
+        return cy.get('#signinEmail');
+    }
+
+    signInPassword() {
+        return cy.get('#signinPassword');
     }
 }
 
 export const signUpPage = new SignUpPage();
-
