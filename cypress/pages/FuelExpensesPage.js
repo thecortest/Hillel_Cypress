@@ -1,193 +1,201 @@
-
-import { basePage } from "./BasePage";
+import { basePage } from './BasePage';
 
 export class FuelExpensePage {
-
-    fuelExpensesButton () {
-        return basePage.header().find('a.btn.header-link').contains('Fuel expenses').should('have.attr', 'href', '/panel/expenses')
+    fuelExpensesButton() {
+        return basePage
+            .header()
+            .find('a.btn.header-link')
+            .contains('Fuel expenses')
+            .should('have.attr', 'href', '/panel/expenses');
     }
 
-    fuelExpensesMainPage () {
+    fuelExpensesMainPage() {
         return cy.get('app-fuel-expenses');
     }
 
-    fuelExpensesTitle () {
+    fuelExpensesTitle() {
         return this.fuelExpensesMainPage().find('div.panel-page_heading').contains('Fuel expenses');
     }
 
-    addExpenseButton () {
+    addExpenseButton() {
         return this.fuelExpensesMainPage().find('button').contains('Add an expense');
     }
 
-    emptyFuelExpensesText () {
-        return this.fuelExpensesMainPage().find('p.h3.panel-empty_message').contains('You don’t have any cars in')
+    emptyFuelExpensesText() {
+        return this.fuelExpensesMainPage().find('p.h3.panel-empty_message').contains('You don’t have any cars in');
     }
 
-    emptyFuelExpensesTextLink () {
-        return this.emptyFuelExpensesText().find('a').should('have.attr', 'href', '/panel/garage')
+    emptyFuelExpensesTextLink() {
+        return this.emptyFuelExpensesText().find('a').should('have.attr', 'href', '/panel/garage');
     }
 
-    emptyFuelExpensesSvg () {
+    emptyFuelExpensesSvg() {
         return this.fuelExpensesMainPage().find('svg');
     }
 
-    carSelectorDropdown () {
+    carSelectorDropdown() {
         return cy.get('app-car-select-dropdown');
     }
 
-    carSelectDropdown () {
+    carSelectDropdown() {
         return this.carSelectorDropdown().find('button#carSelectDropdown');
     }
 
-    carSelectDropdownMenu () {
+    carSelectDropdownMenu() {
         return this.carSelectorDropdown().find('ul.car-select-dropdown_menu.dropdown-menu');
     }
 
-    absentFuelExpensesSvg () {
+    absentFuelExpensesSvg() {
         return this.fuelExpensesMainPage().find('svg');
     }
 
-    absentFuelExpensesText () {
-        return this.fuelExpensesMainPage().find('p.h3.panel-empty_message').contains('You don’t have any fuel expenses filed in')
+    absentFuelExpensesText() {
+        return this.fuelExpensesMainPage()
+            .find('p.h3.panel-empty_message')
+            .contains('You don’t have any fuel expenses filed in');
     }
 
-    globalExpensesModal () {
+    globalExpensesModal() {
         return cy.get('ngb-modal-window').find('div.modal-content');
     }
 
-    addExpenseTitleModal () {
+    addExpenseTitleModal() {
         return this.globalExpensesModal().find('h4.modal-title').contains('Add an expense');
     }
 
-    vehicleFieldLabel () {
+    vehicleFieldLabel() {
         return this.globalExpensesModal().find('.form-group label').contains('Vehicle');
     }
 
-    selectVehicleDropwown () {
+    selectVehicleDropwown() {
         return this.globalExpensesModal().find('select#addExpenseCar');
     }
 
-    reportDateFieldLabel () {
+    reportDateFieldLabel() {
         return this.globalExpensesModal().find('.form-group label').contains('Report date');
     }
 
-    reportDateDateInput () {
-        return this.globalExpensesModal().find('input#addExpenseDate')
+    reportDateDateInput() {
+        return this.globalExpensesModal().find('input#addExpenseDate');
     }
 
-    reportDateDatePickerButton () {
-        return this.globalExpensesModal().find('button.btn.date-picker-toggle')
+    reportDateDatePickerButton() {
+        return this.globalExpensesModal().find('button.btn.date-picker-toggle');
     }
 
-    calendarIcon () {
-        return this.globalExpensesModal().find('span.icon.icon-calendar')
+    calendarIcon() {
+        return this.globalExpensesModal().find('span.icon.icon-calendar');
     }
 
-    datePicker () {
+    datePicker() {
         return cy.get('ngb-datepicker');
     }
 
-    mileageFiledLabel () {
+    mileageFiledLabel() {
         return this.globalExpensesModal().find('.form-group label').contains('Mileage');
     }
 
-    mileageInput () {
+    mileageInput() {
         return this.globalExpensesModal().find('input#addExpenseMileage');
     }
 
-    milageUnit () {
-        return this.globalExpensesModal().find('.input-group-text').contains('km')
+    milageUnit() {
+        return this.globalExpensesModal().find('.input-group-text').contains('km');
     }
 
-    numberOfLitersFiledLabel () {
+    numberOfLitersFiledLabel() {
         return this.globalExpensesModal().find('.form-group label').contains('Number of liters');
     }
 
-    numberOfLitersInput () {
+    numberOfLitersInput() {
         return this.globalExpensesModal().find('input#addExpenseLiters');
     }
 
-    numberOfLitersUnit () {
-        return this.globalExpensesModal().find('.input-group-text').contains('L')
+    numberOfLitersUnit() {
+        return this.globalExpensesModal().find('.input-group-text').contains('L');
     }
 
-    totalCostFiledLabel () {
+    totalCostFiledLabel() {
         return this.globalExpensesModal().find('.form-group label').contains('Total cost');
     }
 
-    totalCostInput () {
+    totalCostInput() {
         return this.globalExpensesModal().find('input#addExpenseTotalCost');
     }
 
-    totalCostUnit () {
-        return this.globalExpensesModal().find('.input-group-text').contains('$')
+    totalCostUnit() {
+        return this.globalExpensesModal().find('.input-group-text').contains('$');
     }
 
-    expenseCancelButton () {
+    expenseCancelButton() {
         return this.globalExpensesModal().find('button.btn.btn-secondary').contains('Cancel');
     }
 
-    expenseAddButton () {
+    expenseAddButton() {
         return this.globalExpensesModal().find('button.btn.btn-primary').contains('Add');
     }
 
-    addExpenseCloseModalButton () {
+    addExpenseCloseModalButton() {
         return this.globalExpensesModal().find('button.close');
     }
 
-    fuelExpensesTable () {
+    fuelExpensesTable() {
         return this.fuelExpensesMainPage().find('table.table.expenses_table');
     }
 
-    fuelExpensesTableHeader () {
+    fuelExpensesTableHeader() {
         return this.fuelExpensesTable().find('thead tr');
     }
 
-    fuelExpensesTableExpenseHeaderRow (headerName) {
+    fuelExpensesTableExpenseHeaderRow(headerName) {
         return this.fuelExpensesTable().find('th').contains(headerName);
     }
 
-    fuelExpensesTableBodyRow (index) {
-        return this.fuelExpensesTable().find('tbody tr').eq(index);
-
+    fuelExpensesTableBodyRows() {
+        return this.fuelExpensesTable().find('tbody tr');
     }
 
-    fuelExpensesTableBodyRowCell (index,value,indexRow) {
+    fuelExpensesTableBodyRow(index) {
+        return this.fuelExpensesTable().find('tbody tr').eq(index);
+    }
+
+    fuelExpensesTableBodyRowCell(index, value, indexRow) {
         return this.fuelExpensesTableBodyRow(indexRow).find('td').eq(index).should('contain', value);
     }
 
-    fuelExpensesTableBodyRowButtons (indexRow) {
+    fuelExpensesTableBodyRowButtons(indexRow) {
         return this.fuelExpensesTableBodyRow(indexRow).find('td').eq(4);
     }
 
-    fuelExpensesTableBodyRowEditButton (indexRow) {
+    fuelExpensesTableBodyRowEditButton(indexRow) {
         return this.fuelExpensesTableBodyRow(indexRow).find('td').eq(4).find('button.btn.btn-edit');
     }
 
-    fuelExpensesTableBodyRowRemoveButton (indexRow) {
+    fuelExpensesTableBodyRowRemoveButton(indexRow) {
         return this.fuelExpensesTableBodyRow(indexRow).find('td').eq(4).find('button.btn.btn-delete');
     }
 
-    editExpenseTitleModal () {
+    editExpenseTitleModal() {
         return this.globalExpensesModal().find('h4.modal-title').contains('Edit an expense');
     }
 
-    editExpenseSaveButton () {
+    editExpenseSaveButton() {
         return this.globalExpensesModal().find('button.btn.btn-primary').contains('Save');
     }
 
-    removeEntryTitleModal () {
+    removeEntryTitleModal() {
         return this.globalExpensesModal().find('h4.modal-title').contains('Remove entry');
     }
 
-    removeEntryText () {
-        return this.globalExpensesModal().find('div.modal-body p').contains('Do you really wnat to remove fuel expense entry from 15.04.2024?');
+    removeEntryText() {
+        return this.globalExpensesModal()
+            .find('div.modal-body p')
+            .contains('Do you really wnat to remove fuel expense entry from 15.04.2024?');
     }
 
-    removeEntryButton () {
+    removeEntryButton() {
         return this.globalExpensesModal().find('button.btn.btn-danger').contains('Remove');
     }
-    
 }
 
 export const fuelExpensesPage = new FuelExpensePage();
