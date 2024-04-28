@@ -1,4 +1,4 @@
-function generateRandomEmail() {
+export function generateRandomEmail() {
     const userName = 'thecortest' + Math.floor(Math.random() * 1000); //Generate random number from 0 to 1000 and add to "thecortest"
     const randomLetters = String.fromCharCode(97 + Math.floor(Math.random() * 26)); //Generate a random letter from a to z
     const domain = 'gmail.com';
