@@ -1,14 +1,14 @@
-import { User } from '../../data/constants/UserData';
-import { garageStep } from '../../steps/garage-step';
-import { generalStep } from '../../steps/general-step';
-import { Car } from '../../data/constants/CarData';
-import { homePage } from '../../pages/HomePage';
+import { User } from '../../../data/constants/UserData';
+import { garageStep } from '../../../steps/garage-step';
+import { generalStep } from '../../../steps/general-step';
+import { Car } from '../../../data/constants/CarData';
+import { homePage } from '../../../pages/HomePage';
 
 describe('Register new user via API', () => {
     before(() => {
         //runs once before all tests
         //Register new user via API
-        cy.request({
+        cy.api({
             method: 'POST',
             url: '/api/auth/signup',
             headers: {
@@ -43,7 +43,7 @@ describe('Register new user via API', () => {
     });
 
     it('Add all cars via API', () => {
-        cy.request('GET', '/api/cars').then((res) => {
+        cy.api('GET', '/api/cars').then((res) => {
             expect(res.status).to.equal(200);
             const carsList = res.body['data'];
             const foundCar = carsList.find((resCar) => resCar.model === Car.model && resCar.brand === Car.brand);

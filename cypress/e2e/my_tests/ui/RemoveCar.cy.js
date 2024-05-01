@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
-import { RegisteredUser } from '../../data/constants/UserData';
-import { garageStep } from '../../steps/garage-step';
+import { RegisteredUser } from '../../../data/constants/UserData';
+import { garageStep } from '../../../steps/garage-step';
 
 describe('Test login with registered user', () => {
     beforeEach(() => {

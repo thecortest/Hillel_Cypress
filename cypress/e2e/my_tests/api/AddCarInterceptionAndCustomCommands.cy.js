@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
-import { RegisteredUser } from '../../data/constants/UserData';
-import { garageStep } from '../../steps/garage-step';
-import { Car3 } from '../../data/constants/CarData';
+import { RegisteredUser } from '../../../data/constants/UserData';
+import { garageStep } from '../../../steps/garage-step';
+import { Car3 } from '../../../data/constants/CarData';
 
 describe('Test login with registered user', () => {
     beforeEach(() => {
@@ -20,7 +20,7 @@ describe('Test login with registered user', () => {
         });
     });
     it('Get all cars via API', () => {
-        cy.request('GET', '/api/cars').then((res) => {
+        cy.api('GET', '/api/cars').then((res) => {
             expect(res.status).to.equal(200);
             const carsList = res.body['data'];
             const foundCar = carsList.find(
