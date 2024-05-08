@@ -1,6 +1,6 @@
-import { RegisteredUser } from '../../data/constants/UserData';
-import { fuelExpensesStep } from '../../steps/fuel-expenses-step';
-import { FuelExpense } from '../../data/constants/FuelExpenseData';
+import { RegisteredUser } from '../../../data/constants/UserData';
+import { fuelExpensesStep } from '../../../steps/fuel-expenses-step';
+import { FuelExpense } from '../../../data/constants/FuelExpenseData';
 
 describe('Test login with registered user', () => {
     beforeEach(() => {

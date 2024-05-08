@@ -4,13 +4,29 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "cypress:open": "cypress open",
+        "cypress:open:ui": "npx cypress open",
+        "tests:chrome": "npx cypress run --browser chrome",
+        "cy:run": "cypress run",
+        "all:tests:run": "cypress run --browser chrome --spec 'cypress/e2e/my_tests/**' --config video=true --reporter mochawesome --reporter-options reportDir=reports/all,html=false,overwrite=false,json=true",
+        "ui": "cypress run --browser chrome --spec 'cypress/e2e/my_tests/ui/**' --config video=true --reporter mochawesome --reporter-options reportDir=reports/ui,html=false,overwrite=false,json=true",
+        "api": "cypress run --browser chrome --spec 'cypress/e2e/my_tests/api/**' --config video=true --reporter mochawesome --reporter-options reportDir=reports/api,html=false,overwrite=false,json=true",
+        "merge:all:results": "npx mochawesome-merge \"reports/all/*.json\" > reports/all.json",
+        "merge:ui:results": "npx mochawesome-merge \"reports/ui/*.json\" > reports/ui.json",
+        "merge:api:results": "npx mochawesome-merge \"reports/api/*.json\" > reports/api.json",
+        "all:report": "npm run all:tests:run && npm run merge:all:results"
     },
     "author": "",
     "license": "ISC",
     "devDependencies": {
         "cypress": "^13.7.2",
         "cypress-xpath": "^2.0.1",
+        "mochawesome": "^7.1.3",
+        "mochawesome-merge": "^4.3.0",
+        "mochawesome-report-generator": "^6.2.0",
         "prettier": "3.2.5"
+    },
+    "dependencies": {
+        "cypress-plugin-api": "^2.11.1"
     }
 }
